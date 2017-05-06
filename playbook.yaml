@@ -2,6 +2,26 @@
 - hosts:
     - server
   become: true
+  vars:
+    ssmtp_root_recipient: mikepurvis+server@gmail.com
+    ssmtp_mailhub: smtp.teksavvy.com:25
+    ssmtp_rewrite_domain: smtp.teksavvy.com
+    ssmtp_from_line_override: YES 
+    software_raid_alerts_email: mikepurvis+server@gmail.com
+    software_raid_devices:
+      - device: /dev/md0
+        level: 1
+        components:
+          - /dev/sdb
+          - /dev/sdc
+        filesystem_type: "ext4"
+        mount_point: "/mnt/storage"
+        mount_options: "noatime,noexec,nodiratime"
+        dump: 0
+        passno: 0
+  roles:
+    - { role: ssmtp }
+    - { role: softwareraid }
   tasks:
     - apt:
-        name: mdadm
+        name: mailutils

@@ -1,0 +1,6 @@
+[submodule "roles/softwareraid"]
+	path = roles/softwareraid
+	url = https://github.com/jacoelho/ansible-softwareraid.git
+[submodule "roles/ssmtp"]
+	path = roles/ssmtp
+	url = https://github.com/brisho/ansible-ssmtp.git
