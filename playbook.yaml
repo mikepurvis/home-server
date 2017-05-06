@@ -19,9 +19,17 @@
         mount_options: "noatime,noexec,nodiratime"
         dump: 0
         passno: 0
+    software_raid_create_kwargs: --run
   roles:
     - { role: ssmtp }
     - { role: softwareraid }
+    - { role: docker }
   tasks:
     - apt:
         name: mailutils
+    - name: Pull Zoneminder image.
+      docker_image:
+        name: quantumobject/docker-zoneminder
+    - name: Pull Daapt image.
+      docker_image:
+        name: linuxserver/daapd

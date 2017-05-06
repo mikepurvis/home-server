@@ -4,3 +4,6 @@
 [submodule "roles/ssmtp"]
 	path = roles/ssmtp
 	url = https://github.com/brisho/ansible-ssmtp.git
+[submodule "roles/docker"]
+	path = roles/docker
+	url = https://github.com/angstwad/docker.ubuntu.git
