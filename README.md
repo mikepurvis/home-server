@@ -22,4 +22,9 @@ Ansible
 ansible-playbook playbook.yaml --ask-sudo-pass
 ```
 
+Manual Backup
+-------------
 
+```
+rsync -r --progress ~/Movies/* mike@kokiri:/mnt/storage/Movies
+```
