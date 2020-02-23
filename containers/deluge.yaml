@@ -1,0 +1,18 @@
+# See: https://github.com/linuxserver/docker-deluge#docker-compose
+---
+version: "2"
+services:
+  deluge:
+    image: linuxserver/deluge
+    container_name: deluge
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+      - UMASK_SET=022
+      - DELUGE_LOGLEVEL=error
+    volumes:
+      - /mnt/storage/deluge/config:/config
+      - /mnt/storage/downloads:/downloads
+    restart: unless-stopped
