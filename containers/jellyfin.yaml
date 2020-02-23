@@ -1,0 +1,22 @@
+# See: https://github.com/linuxserver/docker-jellyfin#docker-compose
+---
+version: "2"
+services:
+  jellyfin:
+    image: linuxserver/jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+      - UMASK_SET=022
+    volumes:
+      - /mnt/storage/jellyfin/config:/config
+      - /mnt/storage/media/tvseries:/data/tvshows
+      - /mnt/storage/media/movies:/data/movies
+      - /mnt/storage/jellyfin/transcode:/transcode
+      - /opt/vc/lib:/opt/vc/lib
+    ports:
+      - 8096:8096
+      - 8920:8920
+    restart: unless-stopped
