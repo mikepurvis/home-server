@@ -1,0 +1,25 @@
+---
+version: "2"
+services:
+    zoneminder:
+        container_name: zoneminder
+        image: dlandon/zoneminder:latest
+        restart: unless-stopped
+        ports:
+            - 9001:80/tcp
+        network_mode: "bridge"
+        privileged: true
+        environment:
+            - TZ=America/New_York
+            - SHMEM=50%
+            - PUID=99
+            - PGID=100
+            - INSTALL_HOOK=0
+            - INSTALL_FACE=0
+            - INSTALL_TINY_YOLO=0
+            - INSTALL_YOLO=0
+            - MULTI_PORT_START=0
+            - MULTI_PORT_END=0
+        volumes:
+            - /mnt/storage/zoneminder/config:/config:rw
+            - /mnt/storage/zoneminder/data:/var/cache/zoneminder:rw
