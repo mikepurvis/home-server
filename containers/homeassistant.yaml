@@ -1,0 +1,12 @@
+---
+version: "2"
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/home-assistant:latest
+    volumes:
+      - /mnt/storage/homeassistant/config:/config
+    environment:
+      - TZ=America/New_York
+    restart: always
+    network_mode: host
